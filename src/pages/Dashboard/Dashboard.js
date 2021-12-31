@@ -14,7 +14,7 @@ const Dashboard = () => {
             <Nav></Nav>
             <h1> this is dashboard pages</h1>
 
-            <button onClick={handleLogout} >Sign out</button>
+            <button className='bg-blue-500 px-4 py-1 rounded-2xl ' onClick={handleLogout} >Sign out</button>
         </div>
     );
 };
