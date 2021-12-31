@@ -11,6 +11,7 @@ const useFirebase =()=> {
     const [user, setUser] = useState({});
     const [error, setError]= useState('');
     const [loading, setLoading] = useState(true);
+    const [admin, setAdmin]= useState(false)
     
     
     
@@ -107,10 +108,29 @@ const useFirebase =()=> {
         .then(res => res.json() )
         .then(data => {
             console.log(data)
+            if(data.insertedId){
+                alert('user added to our database also')
+
+            }
         })
     }
 
+
+    // check admin
+   
+    useEffect(()=> {
+            fetch(`http://localhost:5000/adminCheck/${user.email}`)
+            .then(res=> res.json())
+            .then(data => {
+                console.log(data)
+                setAdmin(data.admin)
+            })
+    },[user.email])
+
     
+   
+
+
 
 
 

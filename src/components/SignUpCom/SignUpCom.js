@@ -19,6 +19,9 @@ const SignUpCom = () => {
     const {signUpEmailPass} = useContext(AuthContext)
    
     const onSubmit = data => {
+        if(data.password !==data.confirmPassword){
+            return alert('password and confirm password must be same')
+        }
         data.role= role 
         
 
