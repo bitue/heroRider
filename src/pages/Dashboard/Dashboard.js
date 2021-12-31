@@ -12,7 +12,7 @@ const Dashboard = () => {
     return (
         <div>
             <Nav></Nav>
-            <h1> this is dashboard pages</h1>
+            <h1 className='font-bold text-2xl text-blue-500 text-center my-5'> Welcome to {user.email} profile page </h1>
 
             <button className='bg-blue-500 px-4 py-1 rounded-2xl ' onClick={handleLogout} >Sign out</button>
         </div>

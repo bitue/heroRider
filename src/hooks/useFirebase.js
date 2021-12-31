@@ -15,13 +15,14 @@ const useFirebase =()=> {
     
     
     //signup with email and pass
-    const signUpEmailPass = (email, password, history)=> {
+    const signUpEmailPass = (email, password, history, data)=> {
         setLoading(true)
         createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             //user sign in now
             const user = userCredential.user;
             setUser(user);
+            saveToDatabase(data)
             history.push('/dashboard')
             setError('')
             console.log(user)
@@ -93,6 +94,23 @@ const useFirebase =()=> {
 
 
     }, [])
+
+
+    const saveToDatabase = (data) => {
+        fetch('http://localhost:5000/addUser', {
+            method:'POST',
+            headers: {
+                "content-type":"application/json"
+            },
+            body:JSON.stringify(data)
+        })
+        .then(res => res.json() )
+        .then(data => {
+            console.log(data)
+        })
+    }
+
+    
 
 
 

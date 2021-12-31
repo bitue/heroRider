@@ -22,7 +22,7 @@ const SignUpCom = () => {
         data.role= role 
         
 
-        signUpEmailPass(data.email, data.password, history)
+        signUpEmailPass(data.email, data.password, history, data)
         console.log(data)
     }
    
