@@ -5,10 +5,12 @@ import { Route, Switch } from 'react-router-dom';
 import Home from './pages/Home/Home';
 import SignUp from './pages/SignUp/SignUp';
 import Dashboard from './pages/Dashboard/Dashboard';
+import AuthProvider from './context/AuthProvider/AuthProvider';
 
 function App() {
   return (
     <div className="App">
+      <AuthProvider>
       <BrowserRouter>
        <Switch>
          <Route exact path='/'>
@@ -34,6 +36,7 @@ function App() {
        </Switch>
       
       </BrowserRouter>
+      </AuthProvider>
      
     </div>
   );

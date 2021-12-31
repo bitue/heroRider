@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useState } from 'react/cjs/react.development';
-import useFirebase from '../../hooks/useFirebase';
+import { AuthContext } from '../../context/AuthProvider/AuthProvider';
+
 
 
 const SignUpCom = () => {
@@ -11,7 +12,7 @@ const SignUpCom = () => {
 
     //get the useFirebase hook 
 
-    const {signUpEmailPass} = useFirebase()
+    const {signUpEmailPass} = useContext(AuthContext)
    
     const onSubmit = data => {
         data.role= role 
@@ -54,7 +55,7 @@ const SignUpCom = () => {
                 </form>
             </div>
 
-            <div>
+            <div className='my-3 space-x-3'>
                 <button className={role==='rider' ? 'bg-blue-500 px-4 py-1 rounded-2xl font-semibold ' : ' px-4 py-1 rounded-2xl font-semibold '} onClick={()=> setRole('rider')} >Join As Rider</button> 
                 <button className={role==='learner' ? 'bg-blue-500 px-4 py-1 rounded-2xl font-semibold ' : ' px-4 py-1 rounded-2xl font-semibold '} onClick={()=> setRole('learner')}>Join As Driving learner</button>
             </div>
