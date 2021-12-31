@@ -14,10 +14,6 @@ const SignInCom = () => {
     const onSubmit = data => {
         signInEmailPass(data.email, data.password, history, uri)
 
-       
-        
-
-       
     }
     return (
         <div>
