@@ -13,6 +13,9 @@ const Nav = () => {
                         <NavLink to='/signUp'>Sign up</NavLink>
                     </div>
                     <div>
+                        <NavLink to='/signIn'>Sign in</NavLink>
+                    </div>
+                    <div>
                         <NavLink to='/dashboard'>Dashboard</NavLink>
                     </div>
 

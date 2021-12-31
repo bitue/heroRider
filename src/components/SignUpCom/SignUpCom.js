@@ -1,5 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
+import { NavLink } from 'react-router-dom';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { useState } from 'react/cjs/react.development';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 
@@ -7,6 +9,8 @@ import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 
 const SignUpCom = () => {
     const { register, handleSubmit } = useForm();
+
+    const history = useHistory()
 
     const [role, setRole] = useState('rider')
 
@@ -18,7 +22,7 @@ const SignUpCom = () => {
         data.role= role 
         
 
-        signUpEmailPass(data.email, data.password)
+        signUpEmailPass(data.email, data.password, history)
         console.log(data)
     }
    
@@ -59,6 +63,7 @@ const SignUpCom = () => {
                 <button className={role==='rider' ? 'bg-blue-500 px-4 py-1 rounded-2xl font-semibold ' : ' px-4 py-1 rounded-2xl font-semibold '} onClick={()=> setRole('rider')} >Join As Rider</button> 
                 <button className={role==='learner' ? 'bg-blue-500 px-4 py-1 rounded-2xl font-semibold ' : ' px-4 py-1 rounded-2xl font-semibold '} onClick={()=> setRole('learner')}>Join As Driving learner</button>
             </div>
+            <p>if you are already registered then go to <NavLink className='font-semibold text-1xl text-blue-500 ' to='/signIn'>sign in</NavLink> page</p>
         </div>
     );
 };

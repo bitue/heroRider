@@ -15,13 +15,14 @@ const useFirebase =()=> {
     
     
     //signup with email and pass
-    const signUpEmailPass = (email, password)=> {
+    const signUpEmailPass = (email, password, history)=> {
         setLoading(true)
         createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             //user sign in now
             const user = userCredential.user;
             setUser(user);
+            history.push('/dashboard')
             setError('')
             console.log(user)
  
@@ -38,16 +39,18 @@ const useFirebase =()=> {
 
     // sign in with email and pass
 
-    const signInEmailPass = (email, password) => {
+    const signInEmailPass = (email, password, history, uri) => {
+        setLoading(true)
       
         signInWithEmailAndPassword(auth, email, password)
-            setLoading(true)
+          
             .then((userCredential) => {
-                // Signed in 
+               
                 const user = userCredential.user;
                 setUser(user)
                 setError('')
                 console.log('signin success');
+                history.push(uri)
               
             })
             .catch((error) => {

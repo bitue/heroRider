@@ -6,6 +6,8 @@ import Home from './pages/Home/Home';
 import SignUp from './pages/SignUp/SignUp';
 import Dashboard from './pages/Dashboard/Dashboard';
 import AuthProvider from './context/AuthProvider/AuthProvider';
+import PrivateRoute from './PrivateRoute/PrivateRoute';
+import SignIn from './pages/SignIn/SignIn';
 
 function App() {
   return (
@@ -27,11 +29,15 @@ function App() {
           <SignUp></SignUp>
 
         </Route>
-
-        <Route  path='/dashboard'>
-          <Dashboard></Dashboard>
+        <Route exact path='/signIn'>
+          <SignIn></SignIn>
 
         </Route>
+
+        <PrivateRoute  path='/dashboard'>
+          <Dashboard></Dashboard>
+
+        </PrivateRoute>
 
        </Switch>
       
