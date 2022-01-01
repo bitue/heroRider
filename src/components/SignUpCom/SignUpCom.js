@@ -12,7 +12,10 @@ const SignUpCom = () => {
 
     const history = useHistory()
 
-    const [role, setRole] = useState('rider')
+    const [role, setRole] = useState('rider');
+    const [nidImg, setNidImg] = useState(null);
+    const [proImg, setProImg] =useState(null);
+    const [drivingImg, setDrivingImg] =useState(null);
 
     //get the useFirebase hook 
 
@@ -22,12 +25,32 @@ const SignUpCom = () => {
         if(data.password !==data.confirmPassword){
             return alert('password and confirm password must be same')
         }
-        data.role= role 
+        data.role= role ;
+        const fileData = {
+            email:data.email,
+            nidPic:data.nidPic[0],
+            profilePic:data.profilePic[0],
+            drivingPic:data.drivingLicensePic[0]
+        };
+
+
+        
+        data.nidPic='';
+        data.profilePic='';
+        data.drivingLicensePic=''
+
+      
+        console.log(fileData,'nid')
+        
         
 
         signUpEmailPass(data.email, data.password, history, data)
         console.log(data)
     }
+
+    const fileDataUpload =(fileUpData) => {
+        fetch('http://localhost:5000/fileupload')
+    } 
    
     return (
         <div>
@@ -41,11 +64,14 @@ const SignUpCom = () => {
                 <input {...register("phone")} type='number' placeholder='put your phone number' required className='w-1/2 block mx-auto px-2 py-1 rounded-2xl border-2 my-1' />
               
                 <input {...register("area")} type='text' placeholder='enter the area ' required className='w-1/2 px-2 block mx-auto py-1 rounded-2xl border-2 my-1' />
-                {/* <input {...register("nidPic")} type='number' placeholder='' required className='w-1/2 px-2 py-1 rounded-2xl border-2 my-1' /> */}
-                {/* <input {...register("profilePic")} type='number' placeholder='' required className='w-1/2 px-2 py-1 rounded-2xl border-2 my-1' /> */}
+                <p>NID Pic</p>
+                <input {...register("nidPic")} type='file' accept='image/*' placeholder='' required className='w-1/2 px-2 py-1 rounded-2xl border-2 my-1' />
+                <p>Profile pic</p>
+                <input {...register("profilePic")} type='file' accept='image/*' placeholder='' required className='w-1/2 px-2 py-1 rounded-2xl border-2 my-1' />
                 {
                     role === 'rider' ? ( <>
-                      {/* <input {...register("drivingLicensePic")} type='number' placeholder='' required className='w-1/2 px-2 py-1 rounded-2xl border-2 my-1' /> */}
+                    <p>Driving license pic</p>
+                      <input {...register("drivingLicensePic")} type='file' accept='image/*' placeholder='' required className='w-1/2 px-2 py-1 rounded-2xl border-2 my-1' />
                      <input {...register("carName")} type='text' placeholder='car name' required className='w-1/2 px-2 block mx-auto py-1 rounded-2xl border-2 my-1' />
                     <input {...register("carModel")} type='text' placeholder='car model' required className='w-1/2 px-2 block mx-auto py-1 rounded-2xl border-2 my-1' />
                     <input {...register("carNamePlate")} type='number' placeholder='car number plate info' required className='w-1/2 px-2 block mx-auto py-1 rounded-2xl border-2 my-1' /> </> ) : null
