@@ -98,7 +98,7 @@ const useFirebase =()=> {
 
 
     const saveToDatabase = (data) => {
-        fetch('http://localhost:5000/addUser', {
+        fetch('https://mighty-wildwood-88666.herokuapp.com/addUser', {
             method:'POST',
             headers: {
                 "content-type":"application/json"
@@ -119,7 +119,7 @@ const useFirebase =()=> {
     // check admin
    
     useEffect(()=> {
-            fetch(`http://localhost:5000/adminCheck/${user.email}`)
+            fetch(`https://mighty-wildwood-88666.herokuapp.com/adminCheck/${user.email}`)
             .then(res=> res.json())
             .then(data => {
                 console.log(data)
