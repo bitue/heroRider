@@ -47,12 +47,12 @@ const AdminProfile = () => {
             }
             else if(filter === 'young'){
 
-                const filteredData = data.filter(user => parseInt(user.age) >18 && parseInt(user.age) <25)
+                const filteredData = data.filter(user => parseInt(user.age) >=18 && parseInt(user.age) <=25)
                 console.log(1)
                 setUsers(filteredData)
             }
             else if(filter === 'adult') {
-                const filteredData = data.filter(user => parseInt(user.age) >25 && parseInt(user.age) <30)
+                const filteredData = data.filter(user => parseInt(user.age) >=26 && parseInt(user.age) <=30)
                 console.log(1)
                 setUsers(filteredData)
 
@@ -62,7 +62,7 @@ const AdminProfile = () => {
     },[filter])
     return (
         <div>
-            <h1> our user lists are{users.length}</h1>
+            <h1> our total user lists {users.length}</h1>
             <div>
                 <input ref={searchRef} className='w-1/2 px-2 py-1 rounded-2xl border-2 my-3'/> 
                 <button onClick={()=>handleSearch('email')} className='bg-blue-500 px-3 py-1 rounded-2xl '>search by email</button>
