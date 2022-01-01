@@ -139,7 +139,7 @@ const useFirebase =()=> {
 
 
     return {
-        signUpEmailPass, logOut, signInEmailPass, user, error, loading
+        signUpEmailPass, logOut, signInEmailPass, user, error, loading, admin
     }
 }
 
