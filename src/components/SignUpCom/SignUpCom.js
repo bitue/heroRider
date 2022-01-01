@@ -62,7 +62,7 @@ const SignUpCom = () => {
         formData.append('nid', fileUpData.nidPic)
         formData.append('pro', fileUpData.profilePic)
         // formData.append('driving', fileUpData.drivingPic)
-        fetch('http://localhost:5000/fileUpload', {
+        fetch('https://mighty-wildwood-88666.herokuapp.com/fileUpload', {
             method:'POST',
             body:formData
         })
