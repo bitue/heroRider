@@ -13,9 +13,7 @@ const SignUpCom = () => {
     const history = useHistory()
 
     const [role, setRole] = useState('rider');
-    const [nidImg, setNidImg] = useState(null);
-    const [proImg, setProImg] =useState(null);
-    const [drivingImg, setDrivingImg] =useState(null);
+   
 
     //get the useFirebase hook 
 
@@ -30,7 +28,7 @@ const SignUpCom = () => {
         const fileData = {
             email:data.email,
             nidPic:data.nidPic[0],
-            profilePic:data.profilePic[0],
+            profilePic:data.profilePic[0]
             
           
         };
