@@ -26,12 +26,18 @@ const SignUpCom = () => {
             return alert('password and confirm password must be same')
         }
         data.role= role ;
+      
         const fileData = {
             email:data.email,
             nidPic:data.nidPic[0],
             profilePic:data.profilePic[0],
-            drivingPic:data.drivingLicensePic[0]
+            
+          
         };
+
+
+        //this function upload the multimedia of the user
+        fileDataUpload(fileData)
 
 
         
@@ -49,7 +55,22 @@ const SignUpCom = () => {
     }
 
     const fileDataUpload =(fileUpData) => {
-        fetch('http://localhost:5000/fileupload')
+
+
+        const formData =new FormData();
+        formData.append('email', fileUpData.email)
+        formData.append('nid', fileUpData.nidPic)
+        formData.append('pro', fileUpData.profilePic)
+        // formData.append('driving', fileUpData.drivingPic)
+        fetch('http://localhost:5000/fileUpload', {
+            method:'POST',
+            body:formData
+        })
+        .then(res=> res.json())
+        .then(data => {
+            console.log(data,'file upload')
+        })
+       
     } 
    
     return (
@@ -70,8 +91,8 @@ const SignUpCom = () => {
                 <input {...register("profilePic")} type='file' accept='image/*' placeholder='' required className='w-1/2 px-2 py-1 rounded-2xl border-2 my-1' />
                 {
                     role === 'rider' ? ( <>
-                    <p>Driving license pic</p>
-                      <input {...register("drivingLicensePic")} type='file' accept='image/*' placeholder='' required className='w-1/2 px-2 py-1 rounded-2xl border-2 my-1' />
+                    {/* <p>Driving license pic</p>
+                      <input {...register("drivingLicensePic")} type='file' accept='image/*' placeholder='' required className='w-1/2 px-2 py-1 rounded-2xl border-2 my-1' /> */}
                      <input {...register("carName")} type='text' placeholder='car name' required className='w-1/2 px-2 block mx-auto py-1 rounded-2xl border-2 my-1' />
                     <input {...register("carModel")} type='text' placeholder='car model' required className='w-1/2 px-2 block mx-auto py-1 rounded-2xl border-2 my-1' />
                     <input {...register("carNamePlate")} type='number' placeholder='car number plate info' required className='w-1/2 px-2 block mx-auto py-1 rounded-2xl border-2 my-1' /> </> ) : null
