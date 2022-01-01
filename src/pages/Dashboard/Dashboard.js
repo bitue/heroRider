@@ -3,9 +3,10 @@ import AdminProfile from '../../components/AdminProfile/AdminProfile';
 import Nav from '../../components/Nav/Nav';
 import UserProfile from '../../components/UserProfile/UserProfile';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
+import useAuth from '../../hooks/useAuth';
 
 const Dashboard = () => {
-    const {user, logOut, admin} = useContext(AuthContext);
+    const {user, logOut, admin} = useAuth()
     console.log(user)
 
     const handleLogout = ()=> {

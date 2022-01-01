@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { useState } from 'react/cjs/react.development';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
+import useAuth from '../../hooks/useAuth';
 
 
 
@@ -17,7 +18,7 @@ const SignUpCom = () => {
 
     //get the useFirebase hook 
 
-    const {signUpEmailPass} = useContext(AuthContext)
+    const {signUpEmailPass} = useAuth()
    
     const onSubmit = data => {
         if(data.password !==data.confirmPassword){

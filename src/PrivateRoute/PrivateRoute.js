@@ -1,9 +1,10 @@
 import React, { useContext } from 'react';
 import { Redirect, Route } from 'react-router-dom';
 import { AuthContext } from '../context/AuthProvider/AuthProvider';
+import useAuth from '../hooks/useAuth';
 
 const PrivateRoute = ({children, ...rest}) => {
-    const {user, loading} = useContext(AuthContext)
+    const {user, loading} = useAuth()
     if(loading){
         return   <h1>i am loading</h1>
     }

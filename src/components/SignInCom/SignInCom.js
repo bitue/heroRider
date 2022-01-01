@@ -3,10 +3,11 @@ import { useForm } from 'react-hook-form';
 import { useLocation } from 'react-router-dom';
 import { NavLink, useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
+import useAuth from '../../hooks/useAuth';
 
 const SignInCom = () => {
     const { register, handleSubmit } = useForm();
-    const {signInEmailPass} = useContext(AuthContext);
+    const {signInEmailPass} = useAuth()
 
     const history = useHistory();
     const location = useLocation();
